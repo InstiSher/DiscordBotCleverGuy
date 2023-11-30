@@ -7,4 +7,4 @@ also i trying to merge coplited to main branch
 
 But i dont know how....
 
-Then i need to make a bueatiful design
+Then i need to make a beautiful design
