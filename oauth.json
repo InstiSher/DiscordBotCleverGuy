@@ -1,0 +1,13 @@
+#from ytmusicapi import setup_oauth
+#print(setup_oauth())
+
+#Then you will get this json file
+{
+ "access_token": "",
+ "expires_in": 11111,
+ "refresh_token": "",
+ "scope": "",
+ "token_type": "",
+ "expires_at": 11111111111,
+ "filepath": ""
+}
