@@ -17,3 +17,4 @@ massage to handler after "Начать поиск"
 
 
 TG updated, but not tested as well as discord bot
+Tg now better than discord bot :D
