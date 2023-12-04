@@ -5,59 +5,15 @@ from SongFinderTg import Lyrics
 
 bot = telebot.TeleBot(token)
 
-
-def Bigger1990(lyrics):
-    dict_lyrics = {
-        'lyrics': '',
-        'lyrics2': '',
-    }
-    count = 0
-    flag = 0
-    x = 0
-    for i in lyrics['lyrics']:
-        if count < 1990 and flag == 0:
-            dict_lyrics['lyrics'] = dict_lyrics['lyrics'] + i  # После 1900 найти \n и после как нашлось изменить флаг на lyrics2
-            if count > 1900 and i == '\n':  # Да, это один символ
-                x = count + 1990
-                flag += 1
-        elif count < x and flag == 1:
-            dict_lyrics['lyrics2'] = dict_lyrics['lyrics2'] + i
-        count += 1
-    return dict_lyrics
-
-def Bigger3980(lyrics):
-    dict_lyrics = {
-        'lyrics': '',
-        'lyrics2': '',
-        'lyrics3': '',
-    }
-    count = 0
-    flag = 0
-    x = 0
-    for i in lyrics['lyrics']:
-        if count < 1990 and flag == 0:
-            dict_lyrics['lyrics'] = dict_lyrics['lyrics'] + i  # После 1900 найти \n и после как нашлось изменить флаг на lyrics2
-            if count > 1900 and i == '\n':  # Да, это один символ
-                x = count + 1990
-                flag += 1
-        elif count < x and flag == 1:
-            dict_lyrics['lyrics2'] = dict_lyrics['lyrics2'] + i
-            if count > x - 90 and i == '\n':  # Да, это один символ
-                flag += 1
-        else:
-            dict_lyrics['lyrics3'] = dict_lyrics['lyrics3'] + i
-        count += 1
-    return dict_lyrics
-
-
 def Poisk(message):
+    print(message.text)
     lyrics = Lyrics(message.text)
     if lyrics['lyrics'] == "":
-        bot.send_message(message.chat.id, text="")
+        bot.send_message(message.chat.id, text="Текст песни не найден")
     elif lyrics["lyrics"] == "Вы создаёте слишком много Плейлистов":
         bot.send_message(message.chat.id, text="YtMusic получает слишком много запросов, повторите позже")
     else:
-        bot.send_message(message.chat.id, text=f"Найдена следующая песня:\n{lyrics['Title']} {lyrics['Artists']}")
+        bot.send_message(message.chat.id, text=f"Найдена следующая песня:\n{lyrics['Title']}, {lyrics['Artists']}")
         bot.send_message(message.chat.id, text=f"{lyrics['lyrics']}")
 
 
