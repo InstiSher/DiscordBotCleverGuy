@@ -6,7 +6,7 @@ def GetLyricsMain(SongName):
     search_results = ytmusic.search(SongName)   # Ведём поиск 10 самых популярных выводов(Популярное, песни, альбомы и т.д)
     try:     # В этом блоке мы пробуем Сохранить песню в плейлист
         count = 0  # Подсчет на каком мы сейчас месте из 10 найденых выводов
-        for i in search_results:   # i берет первый вывод проходится по алгоритму если не вышло, то берет второй вывод
+        for i in search_results[:-1]:   # i берет первый вывод проходится по алгоритму если не вышло, то берет второй вывод
             if i['category'] == 'Songs' or i['category'] == None:  # Так как нам нужны рекомендации и песни сделаем на них проверку
                 Title = search_results[count]['title']  # сохраняем название песни в переменную Title
                 Artists = search_results[count]["artists"][0]["name"]
@@ -15,13 +15,10 @@ def GetLyricsMain(SongName):
                     break   # завершаем цикл for
             count += 1
 
-        if count != 10:
-            playlist = ytmusic.get_watch_playlist(search_results[count]['videoId']) # Просматриваем песню которую сохранили в плейлисте
-            lyrics_song = ytmusic.get_lyrics(playlist["lyrics"]) # Сохраняем текст песни
-            lyrics_song["Title"] = Title # Сохраняем название песни
-            lyrics_song["Artists"] = Artists # Сохраняем автора песни
-        else:
-            lyrics_song = {"lyrics": ""}# При выходе за пределы
+        playlist = ytmusic.get_watch_playlist(search_results[count]['videoId']) # Просматриваем песню которую сохранили в плейлисте
+        lyrics_song = ytmusic.get_lyrics(playlist["lyrics"]) # Сохраняем текст песни
+        lyrics_song["Title"] = Title # Сохраняем название песни
+        lyrics_song["Artists"] = Artists # Сохраняем автора песни
     except Exception as e:  # Если на каком-то моменте вышла ошибка или песня не имеет текста, ты мы получим
         lyrics_song = {"lyrics": ""}  # Пустой словарь
         print(e)
@@ -37,7 +34,7 @@ def GetLyricsSecond(SongName):
     search_results = ytmusic.search(SongName)
     try:
         count = 0
-        for i in search_results:
+        for i in search_results[:-1]:
             if i['category'] == 'Songs' or i['category'] == None:
                 Title = search_results[count]['title']
                 Artists = search_results[count]["artists"][0]["name"]
@@ -45,13 +42,10 @@ def GetLyricsSecond(SongName):
                     ytmusic.add_playlist_items(playlistId, [search_results[count]['videoId']])
                     break
             count += 1
-        if count != 10:
-            playlist = ytmusic.get_watch_playlist(search_results[count]['videoId'])
-            lyrics_song = ytmusic.get_lyrics(playlist["lyrics"])
-            lyrics_song["Title"] = Title
-            lyrics_song["Artists"] = Artists
-        else:
-            lyrics_song = {"lyrics": ""}
+        playlist = ytmusic.get_watch_playlist(search_results[count]['videoId'])
+        lyrics_song = ytmusic.get_lyrics(playlist["lyrics"])
+        lyrics_song["Title"] = Title
+        lyrics_song["Artists"] = Artists
     except Exception as e:
         lyrics_song = {"lyrics": ""}
         print(e)
@@ -67,7 +61,7 @@ def GetLyricsThird(SongName):
     search_results = ytmusic.search(SongName)
     try:
         count = 0
-        for i in search_results:
+        for i in search_results[:-1]:
             if i['category'] == 'Songs' or i['category'] == None:
                 Title = search_results[count]['title']
                 Artists = search_results[count]["artists"][0]["name"]
@@ -75,13 +69,10 @@ def GetLyricsThird(SongName):
                     ytmusic.add_playlist_items(playlistId, [search_results[count]['videoId']])
                     break
             count += 1
-        if count != 10:
-            playlist = ytmusic.get_watch_playlist(search_results[count]['videoId'])
-            lyrics_song = ytmusic.get_lyrics(playlist["lyrics"])
-            lyrics_song["Title"] = Title
-            lyrics_song["Artists"] = Artists
-        else:
-            lyrics_song = {"lyrics": ""}
+        playlist = ytmusic.get_watch_playlist(search_results[count]['videoId'])
+        lyrics_song = ytmusic.get_lyrics(playlist["lyrics"])
+        lyrics_song["Title"] = Title
+        lyrics_song["Artists"] = Artists
     except Exception as e:
         lyrics_song = {"lyrics": ""}
         print(e)
