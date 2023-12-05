@@ -1,5 +1,5 @@
 # DiscordBotCleverGuy
-First work with discord API
+<b>First work with discord API</b>
 
 description of the work and soon adding cables bot with the same functions
 
