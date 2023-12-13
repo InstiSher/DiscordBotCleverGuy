@@ -1,7 +1,7 @@
 # DiscordBotCleverGuy
 <b>First work with discord API</b>
 
-# description of the work and soon adding cables bot with the same functions
+description of the work and soon adding cables bot with the same functions
 
 also i trying to merge coplited to main branch
 
