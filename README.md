@@ -7,7 +7,7 @@ also i trying to merge coplited to main branch
 
 But i dont know how....
 
-Then i need to make a beautiful design
+Then i need to make a beautiful design (bot havent it)
 
 How telegramm may send a picture?
 
